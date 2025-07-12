@@ -77,7 +77,7 @@ const portfolioProjectData: ProjectPageData = {
       content: "Consistent cyberpunk aesthetic with custom clip-path geometries, fake border effects, neon glow animations, and a carefully crafted color palette that maintains accessibility while delivering a futuristic visual experience."
     }
   ],
-  githubUrl: "https://github.com/biakp/portfolio",
+  githubUrl: "https://github.com/biakp/portfolio-2025",
   demoUrl: "https://beatrizknabben.dev",
   isCompleted: true,
   pageTitle: "Portfolio Website - Cyberpunk Developer Portfolio | Beatriz Knabben",

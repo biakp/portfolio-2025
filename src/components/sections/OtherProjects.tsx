@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import Link from "next/link";
 
 const projects = [
   {
@@ -16,6 +15,15 @@ const projects = [
   },
   {
     id: 2,
+    title: "Splendore - Tray E-commerce Theme",
+    description: "Premium e-commerce theme developed for the Tray platform using Twig templating engine. Splendore combines elegant design with high-performance optimization and advanced functionality for sophisticated online stores.",
+    technologies: ["Twig", "Tray Platform", "SCSS", "JavaScript", "REST API"],
+    github: "https://github.com/biakp",
+    live: "/projects/tray-ecommerce",
+    featured: true,
+  },
+  {
+    id: 3,
     title: "WhatsApp Automation with n8n + Docker",
     description: "Custom WhatsApp messaging workflow using n8n, self-hosted in Docker. Automates message delivery based on Google Sheets data with advanced conditional logic and anti-spam protection.",
     technologies: ["n8n", "Docker", "WhatsApp API", "Google Sheets", "Node.js"],
@@ -24,7 +32,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: "Shopify E-commerce Development",
     description: "Custom e-commerce storefront for a premium shoe brand using Shopify's Dawn theme. Features advanced Liquid templating, dynamic sections, and performance optimization for a high-end shopping experience.",
     technologies: ["Shopify Liquid", "Dawn Theme", "SCSS", "JavaScript", "Metafields"],
@@ -151,36 +159,6 @@ export function OtherProjects({ currentProjectPath, maxProjects = 2 }: OtherProj
             </motion.div>
           ))}
         </div>
-
-        {/* View All Projects Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Link href="/#projects">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="cyber-button-enhanced inline-flex items-center px-8 py-3 border border-primary text-primary font-mono font-medium hover:bg-primary hover:text-background transition-all duration-300 cyber-cursor-pointer relative"
-              style={{
-                clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
-              }}
-            >
-              {/* Fake borders */}
-              <div 
-                className="absolute top-0 right-0 w-3 h-3 bg-border"
-                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}
-              />
-              <div 
-                className="absolute bottom-0 left-0 w-3 h-3 bg-border"
-                style={{ clipPath: 'polygon(0 0, 0 100%, 100% 100%)' }}
-              />
-              <span className="relative z-10">View All Projects</span>
-            </motion.button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

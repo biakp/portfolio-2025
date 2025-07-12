@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { validateContactForm } from "@/utils/validation";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -10,13 +11,64 @@ export function ContactSection() {
     email: "",
     message: "",
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+    
+    // Clear previous errors
+    setFieldErrors({});
+    
+    // Client-side validation
+    const validation = validateContactForm(formData);
+    if (!validation.isValid) {
+      setFieldErrors(validation.errors);
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Message sent successfully!'
+        });
+        // Reset form
+        setFormData({ name: "", email: "", message: "" });
+        setFieldErrors({});
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Failed to send message. Please try again.'
+        });
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -152,9 +204,16 @@ export function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="cyber-clip w-full px-4 py-3 bg-surface border border-border focus:ring-2 focus:ring-primary focus:border-primary text-text transition-all duration-300 font-mono placeholder:text-muted"
+                    className={`cyber-clip w-full px-4 py-3 bg-surface border transition-all duration-300 font-mono placeholder:text-muted ${
+                      fieldErrors.name 
+                        ? 'border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                        : 'border-border focus:ring-2 focus:ring-primary focus:border-primary'
+                    } text-text`}
                     placeholder="Enter identification..."
                   />
+                  {fieldErrors.name && (
+                    <p className="mt-2 text-sm text-red-400 font-mono">✗ {fieldErrors.name}</p>
+                  )}
                 </div>
 
                 <div>
@@ -168,12 +227,19 @@ export function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="cyber-clip-enhanced w-full px-4 py-3 bg-surface border border-border focus:ring-2 focus:ring-primary focus:border-primary text-text transition-all duration-300 font-mono placeholder:text-muted relative"
+                    className={`cyber-clip-enhanced w-full px-4 py-3 bg-surface border transition-all duration-300 font-mono placeholder:text-muted relative ${
+                      fieldErrors.email 
+                        ? 'border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                        : 'border-border focus:ring-2 focus:ring-primary focus:border-primary'
+                    } text-text`}
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                     }}
                     placeholder="your@email.com"
                   />
+                  {fieldErrors.email && (
+                    <p className="mt-2 text-sm text-red-400 font-mono">✗ {fieldErrors.email}</p>
+                  )}
                 </div>
 
                 <div>
@@ -187,44 +253,100 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="cyber-clip-enhanced w-full px-4 py-3 bg-surface border border-border focus:ring-2 focus:ring-primary focus:border-primary text-text transition-all duration-300 resize-none font-mono placeholder:text-muted relative"
+                    className={`cyber-clip-enhanced w-full px-4 py-3 bg-surface border transition-all duration-300 resize-none font-mono placeholder:text-muted relative ${
+                      fieldErrors.message 
+                        ? 'border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500' 
+                        : 'border-border focus:ring-2 focus:ring-primary focus:border-primary'
+                    } text-text`}
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
                     }}
                     placeholder="Tell me about your project..."
                   />
+                  {fieldErrors.message && (
+                    <p className="mt-2 text-sm text-red-400 font-mono">✗ {fieldErrors.message}</p>
+                  )}
                 </div>
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="cyber-button-enhanced w-full flex items-center justify-center space-x-2 px-8 py-3 bg-primary text-background font-mono font-medium hover:bg-accent transition-all duration-300 relative"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className={`cyber-button-enhanced w-full flex items-center justify-center space-x-2 px-8 py-3 font-mono font-medium transition-all duration-300 relative ${
+                    isSubmitting 
+                      ? 'bg-muted text-text cursor-not-allowed' 
+                      : 'bg-primary text-background hover:bg-accent'
+                  }`}
                   style={{
                     clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
                   }}
                 >
                   {/* Fake borders for cut corners - matching primary color */}
                   <div 
-                    className="absolute top-0 right-0 w-3 h-3 bg-primary"
+                    className={`absolute top-0 right-0 w-3 h-3 ${isSubmitting ? 'bg-muted' : 'bg-primary'}`}
                     style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}
                   />
                   <div 
-                    className="absolute bottom-0 left-0 w-3 h-3 bg-primary"
+                    className={`absolute bottom-0 left-0 w-3 h-3 ${isSubmitting ? 'bg-muted' : 'bg-primary'}`}
                     style={{ clipPath: 'polygon(0 0, 0 100%, 100% 100%)' }}
                   />
                   
                   {/* Border overlay */}
                   <div 
-                    className="absolute inset-0 border border-primary pointer-events-none"
+                    className={`absolute inset-0 border pointer-events-none ${isSubmitting ? 'border-muted' : 'border-primary'}`}
                     style={{
                       clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))'
                     }}
                   />
                   
-                  <Send className="w-4 h-4 relative z-10" />
-                  <span className="relative z-10">Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-text border-t-transparent rounded-full animate-spin relative z-10" />
+                      <span className="relative z-10">Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 relative z-10" />
+                      <span className="relative z-10">Send Message</span>
+                    </>
+                  )}
                 </motion.button>
+
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`mt-4 p-4 font-mono text-sm cyber-clip-enhanced relative ${
+                      submitStatus.type === 'success' 
+                        ? 'bg-green-900/20 border border-green-500 text-green-400' 
+                        : 'bg-red-900/20 border border-red-500 text-red-400'
+                    }`}
+                    style={{
+                      clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
+                    }}
+                  >
+                    {/* Fake borders for cut corners */}
+                    <div 
+                      className={`absolute top-0 right-0 w-2 h-2 ${
+                        submitStatus.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+                      }`}
+                      style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}
+                    />
+                    <div 
+                      className={`absolute bottom-0 left-0 w-2 h-2 ${
+                        submitStatus.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+                      }`}
+                      style={{ clipPath: 'polygon(0 0, 0 100%, 100% 100%)' }}
+                    />
+                    <span className="relative z-10">
+                      {submitStatus.type === 'success' ? '✓ ' : '✗ '}
+                      {submitStatus.message}
+                    </span>
+                  </motion.div>
+                )}
               </form>
             </motion.div>
           </div>

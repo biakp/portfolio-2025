@@ -17,6 +17,8 @@ const whatsappProjectData: ProjectPageData = {
   title: "WhatsApp Automation",
   subtitle: "with n8n + Docker",
   description: "A sophisticated WhatsApp messaging workflow system built with n8n and Docker. Features automated message delivery, Google Sheets integration, conditional logic, and anti-spam protection for reliable business communication.",
+  imageUrl: "/projects/whatsapp-automation-workflow.JPG",
+  imageAlt: "n8n WhatsApp automation workflow diagram showing message processing and integrations",
   techStack: [
     "n8n",
     "Docker",
@@ -54,9 +56,9 @@ const whatsappProjectData: ProjectPageData = {
   ],
   stats: [
     { label: "Response Time", value: "< 2s", description: "Average message delivery", icon: Clock },
-    { label: "Success Rate", value: "99.8%", description: "Message delivery success", icon: CheckCircle },
-    { label: "Containers", value: "3", description: "Docker services running", icon: Cpu },
-    { label: "Integrations", value: "5+", description: "Connected services", icon: Users }
+    { label: "Success Rate", value: "95.8%", description: "Message delivery success", icon: CheckCircle },
+    { label: "Containers", value: "13", description: "Docker services running", icon: Cpu },
+    { label: "Integrations", value: "10+", description: "Connected services", icon: Users }
   ],
   technicalDetails: [
     {
@@ -65,14 +67,14 @@ const whatsappProjectData: ProjectPageData = {
     },
     {
       title: "Data Flow", 
-      content: "Google Sheets → N8n Workflow → WhatsApp Business API → Message Delivery. Real-time status updates and error handling ensure message reliability."
+      content: "Google Sheets → N8n Workflow → WhatsApp Evolution API → Message Delivery. Real-time status updates and error handling ensure message reliability."
     },
     {
       title: "Security",
       content: "Self-hosted solution with encrypted communications, API key management, and rate limiting to prevent spam and ensure compliance."
     }
   ],
-  githubUrl: "https://github.com/biakp",
+  githubUrl: "",
   isCompleted: true,
   pageTitle: "WhatsApp Automation with n8n + Docker | Beatriz Knabben",
   metaDescription: "Custom WhatsApp messaging workflow using n8n, self-hosted in Docker. Automates message delivery based on Google Sheets data with advanced conditional logic.",

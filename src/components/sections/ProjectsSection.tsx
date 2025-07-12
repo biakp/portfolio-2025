@@ -16,6 +16,15 @@ const projects = [
   },
   {
     id: 2,
+    title: "Splendore - Tray E-commerce Theme",
+    description: "Premium e-commerce theme developed for the Tray platform using Twig templating engine. Splendore combines elegant design with high-performance optimization and advanced functionality for sophisticated online stores.",
+    technologies: ["Twig", "Tray Platform", "SCSS", "JavaScript", "REST API"],
+    github: "https://github.com/biakp",
+    live: "/projects/tray-ecommerce",
+    featured: true,
+  },
+  {
+    id: 3,
     title: "WhatsApp Automation with n8n + Docker",
     description: "Custom WhatsApp messaging workflow using n8n, self-hosted in Docker. Automates message delivery based on Google Sheets data with advanced conditional logic and anti-spam protection.",
     technologies: ["n8n", "Docker", "WhatsApp API", "Google Sheets", "Node.js"],
@@ -24,7 +33,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: "Shopify E-commerce Development",
     description: "Custom e-commerce storefront for a premium shoe brand using Shopify's Dawn theme. Features advanced Liquid templating, dynamic sections, and performance optimization for a high-end shopping experience.",
     technologies: ["Shopify Liquid", "Dawn Theme", "SCSS", "JavaScript", "Metafields"],

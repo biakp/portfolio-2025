@@ -52,7 +52,7 @@ export function AboutSection() {
                   {[
                     {
                       title: "Cybersecurity Degree",
-                      institution: "University",
+                      institution: "Estácio",
                       period: "2024-2027",
                       status: "In Progress"
                     },
@@ -116,12 +116,14 @@ export function AboutSection() {
                     "TypeScript",
                     "Vue.js",
                     "Liquid (Shopify)",
+                    "Twig (Tray)",
                     "Tailwind CSS",
                     "Meta Ads",
                     "n8n Automation",
                     "Node.js",
                     "WordPress",
-                    "ComfyUI"
+                    "ComfyUI",
+                    "REST APIs"
                   ].map((skill, index) => (
                     <motion.div
                       key={skill}

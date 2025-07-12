@@ -10,6 +10,7 @@ import {
   LucideIcon
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { OtherProjects } from "@/components/sections/OtherProjects";
 
 export interface ProjectFeature {
@@ -45,6 +46,8 @@ export interface ProjectPageData {
   pageTitle: string;
   metaDescription: string;
   currentPath?: string; // Add current path for filtering other projects
+  imageUrl?: string; // Add optional image URL
+  imageAlt?: string; // Add optional image alt text
 }
 
 interface ProjectPageTemplateProps {
@@ -234,6 +237,51 @@ export default function ProjectPageTemplate({ data, children }: ProjectPageTempl
           </motion.div>
         </div>
       </section>
+
+      {/* Project Image */}
+      {data.imageUrl && (
+        <section className="py-16 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="cyber-clip-enhanced bg-surface border border-border p-1 relative"
+              style={{
+                clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))'
+              }}
+            >
+              {/* Fake borders for cut corners */}
+              <div 
+                className="absolute top-0 right-0 w-4 h-4 bg-border"
+                style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}
+              />
+              <div 
+                className="absolute bottom-0 left-0 w-4 h-4 bg-border"
+                style={{ clipPath: 'polygon(0 0, 0 100%, 100% 100%)' }}
+              />
+              
+              <div className="relative overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10" style={{ aspectRatio: 'auto' }}>
+                <Image
+                  src={data.imageUrl}
+                  alt={data.imageAlt || `${data.title} project screenshot`}
+                  width={800}
+                  height={450}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+                {/* Overlay with project info */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="p-6 text-center w-full">
+                    <p className="font-mono text-primary text-sm mb-2">{data.title}</p>
+                    <p className="font-mono text-text text-xs">{data.subtitle}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Project Stats */}
       {data.stats && (
