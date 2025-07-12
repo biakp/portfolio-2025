@@ -1,6 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Simple in-memory rate limiting (for production, use Redis or database)
+const rateLimit = new Map();
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+const MAX_REQUESTS = 3; // Max 3 requests per window
+
+// Input sanitization
+const sanitizeInput = (input: string): string => {
+  return input
+    .trim()
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') // Remove script tags
+    .replace(/[<>]/g, '') // Remove < and > characters
+    .slice(0, 1000); // Limit length
+};
+
+// Rate limiting function
+const checkRateLimit = (ip: string): boolean => {
+  const now = Date.now();
+  const requests = rateLimit.get(ip) || [];
+  
+  // Remove old requests outside the window
+  const validRequests = requests.filter((time: number) => now - time < RATE_LIMIT_WINDOW);
+  
+  if (validRequests.length >= MAX_REQUESTS) {
+    return false;
+  }
+  
+  validRequests.push(now);
+  rateLimit.set(ip, validRequests);
+  return true;
+};
+
 // Email configuration
 const createTransporter = () => {
   // For Gmail (you'll need to set up environment variables)
@@ -32,8 +63,26 @@ const createTransporter = () => {
 
 export async function POST(request: NextRequest) {
   try {
+    // Get client IP for rate limiting
+    const ip = request.headers.get('x-forwarded-for') || 
+               request.headers.get('x-real-ip') || 
+               'unknown';
+    
+    // Check rate limit
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please wait before sending another message.' },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
-    const { name, email, message } = body;
+    let { name, email, message } = body;
+
+    // Sanitize inputs
+    name = sanitizeInput(name || '');
+    email = sanitizeInput(email || '');
+    message = sanitizeInput(message || '');
 
     // Validate required fields
     if (!name || !email || !message) {

@@ -40,12 +40,9 @@ export function Footer() {
             className="lg:col-span-2"
           >
             <div className="mb-6">
-              <motion.h3 
-                className="text-2xl font-bold text-foreground glow-text-subtle mb-2"
-                whileHover={{ scale: 1.05 }}
-              >
-                Beatriz Knabben
-              </motion.h3>
+              <h3 className="text-2xl font-bold text-foreground glow-text-subtle mb-2">
+                <span className="text-primary">&gt;</span> Beatriz Knabben<span className="animate-pulse">_</span>
+              </h3>
               <div className="h-0.5 w-16 bg-gradient-to-r from-primary to-accent mb-4" />
               <p className="text-muted leading-relaxed max-w-md">
                 Frontend developer crafting modern, responsive interfaces with cutting-edge technologies. 
