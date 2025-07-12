@@ -17,7 +17,7 @@ export default {
         secondary: '#5a6fff',
         accent: '#6b7cff',
         text: '#f9f9f9',
-        muted: '#a1a1aa',
+        muted: '#e2e8f0', // Changed from #a1a1aa to a proper white/light gray
         border: '#455dff',
 
         // Legacy color system for compatibility

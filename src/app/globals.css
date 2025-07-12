@@ -14,7 +14,7 @@
   --primary-foreground: 21 21 21;
   --secondary: 90 111 255;
   --secondary-foreground: 21 21 21;
-  --muted: 161 161 170;
+  --muted: 226 232 240;  /* Changed to match new muted color */
   --muted-foreground: 249 249 249;
   --accent: 107 124 255;
   --accent-foreground: 21 21 21;
@@ -31,7 +31,7 @@
   --primary-foreground: 21 21 21;
   --secondary: 90 111 255;
   --secondary-foreground: 21 21 21;
-  --muted: 161 161 170;
+  --muted: 226 232 240;  /* Changed to match new muted color */
   --muted-foreground: 249 249 249;
   --accent: 107 124 255;
   --accent-foreground: 21 21 21;

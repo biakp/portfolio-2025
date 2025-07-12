@@ -100,7 +100,7 @@ export function MobileNavigation({ activeSection }: MobileNavigationProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden fixed inset-0 bg-background/95 backdrop-blur-md z-40"
+              className="md:hidden fixed inset-0 bg-background/98 backdrop-blur-md z-40"
               onClick={() => setIsOpen(false)}
             />
 
@@ -114,7 +114,7 @@ export function MobileNavigation({ activeSection }: MobileNavigationProps) {
                 duration: 0.3,
                 ease: "easeInOut"
               }}
-              className="md:hidden fixed top-0 right-0 h-full w-80 bg-surface border-l border-border z-40 overflow-hidden"
+              className="md:hidden fixed top-0 right-0 h-full w-80 bg-background border-l border-border z-40 overflow-hidden"
               style={{
                 clipPath: 'polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px)'
               }}

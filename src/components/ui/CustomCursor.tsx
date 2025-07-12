@@ -7,6 +7,7 @@ export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [cursorText, setCursorText] = useState("");
   const [cursorType, setCursorType] = useState<"default" | "pointer" | "text">("default");
+  const [isMobile, setIsMobile] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -16,6 +17,28 @@ export function CustomCursor() {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                            window.innerWidth < 768 ||
+                            'ontouchstart' in window;
+      setIsMobile(isMobileDevice);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Return early if mobile
+    if (isMobile) {
+      return;
+    }
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -75,7 +98,12 @@ export function CustomCursor() {
       window.removeEventListener("mousemove", moveCursor);
       observer.disconnect();
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, isMobile]);
+
+  // Don't render cursor on mobile devices
+  if (isMobile) {
+    return null;
+  }
 
   const getCursorVariants = () => {
     switch (cursorType) {
@@ -125,10 +153,12 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* Hide default cursor */}
+      {/* Hide default cursor only on desktop */}
       <style jsx global>{`
-        * {
-          cursor: none !important;
+        @media (min-width: 768px) {
+          * {
+            cursor: none !important;
+          }
         }
       `}</style>
 
