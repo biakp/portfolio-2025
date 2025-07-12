@@ -12,6 +12,8 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { OtherProjects } from "@/components/sections/OtherProjects";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { createSmoothScrollHandler } from "@/utils/smoothScroll";
 
 export interface ProjectFeature {
   icon: LucideIcon;
@@ -214,6 +216,7 @@ export default function ProjectPageTemplate({ data, children }: ProjectPageTempl
               
               <motion.a
                 href="#features"
+                onClick={createSmoothScrollHandler("#features")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="cyber-button-enhanced inline-flex items-center px-8 py-3 border border-primary text-primary font-mono font-medium hover:bg-primary hover:text-background transition-all duration-300 cyber-cursor-pointer relative"
@@ -433,6 +436,9 @@ export default function ProjectPageTemplate({ data, children }: ProjectPageTempl
 
       {/* Other Projects Section */}
       <OtherProjects currentProjectPath={data.currentPath || ""} />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 }

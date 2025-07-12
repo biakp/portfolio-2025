@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { MobileNavigation } from "./MobileNavigation";
+import { createSmoothScrollHandler } from "@/utils/smoothScroll";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -35,15 +36,6 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetElement = document.getElementById(href.slice(1));
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-      // Update focus for screen readers
-      targetElement.focus({ preventScroll: true });
-    }
-  };
   return (
     <>
       {/* Desktop Navigation */}
@@ -60,7 +52,7 @@ export function Navigation() {
             <li key={item.name}>
               <a
                 href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
+                onClick={createSmoothScrollHandler(item.href)}
                 className={`relative text-sm font-syneMono font-normal transition-all duration-300 hover:text-primary hover:glow-text animated-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-sm px-2 py-1 cyber-cursor-pointer ${
                   activeSection === item.href.slice(1)
                     ? "text-primary glow-text"

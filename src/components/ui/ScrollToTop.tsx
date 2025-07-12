@@ -4,6 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
+interface LenisInstance {
+  scrollTo: (target: number, options?: { duration?: number; easing?: (t: number) => number }) => void;
+}
+
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -22,10 +26,20 @@ export function ScrollToTop() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    // Use Lenis for smooth scrolling if available
+    const lenisInstance = (window as typeof window & { lenis?: LenisInstance }).lenis;
+    if (lenisInstance) {
+      lenisInstance.scrollTo(0, { 
+        duration: 2.0,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
+    } else {
+      // Fallback to native smooth scroll
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (

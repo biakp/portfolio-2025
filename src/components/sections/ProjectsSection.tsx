@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { createSmoothScrollHandler } from "@/utils/smoothScroll";
 
 const projects = [
   {
@@ -150,6 +151,7 @@ export function ProjectsSection() {
           >
             <motion.a
               href="#contact"
+              onClick={createSmoothScrollHandler("#contact")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="cyber-button inline-flex items-center px-8 py-3 border border-primary text-primary font-mono hover:bg-primary hover:text-background transition-all duration-300 glow-border hover:glow-text cyber-cursor-pointer"

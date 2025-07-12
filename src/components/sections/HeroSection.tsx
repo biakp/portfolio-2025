@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { createSmoothScrollHandler } from "@/utils/smoothScroll";
 
 export function HeroSection() {
   return (
@@ -61,6 +62,7 @@ export function HeroSection() {
           >
             <motion.a
               href="#projects"
+              onClick={createSmoothScrollHandler("#projects")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="cyber-button-enhanced inline-flex items-center px-8 py-3 bg-primary text-background font-syneMono font-bold hover:bg-secondary transition-all duration-300 shadow-lg relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background border border-primary"
@@ -93,6 +95,7 @@ export function HeroSection() {
             
             <motion.a
               href="#contact"
+              onClick={createSmoothScrollHandler("#contact")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="cyber-button-enhanced inline-flex items-center px-8 py-3 border border-primary text-primary font-syneMono font-bold hover:bg-primary hover:text-background transition-all duration-300 relative overflow-hidden group focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
@@ -163,6 +166,7 @@ export function HeroSection() {
       >
         <motion.a
           href="#about"
+          onClick={createSmoothScrollHandler("#about")}
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="block p-2 rounded-none hover:bg-surface transition-all duration-300 border border-transparent hover:border-primary group mouse-glow interactive-light focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"

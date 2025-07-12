@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { createSmoothScrollHandler } from "@/utils/smoothScroll";
 
 interface MobileNavigationProps {
   activeSection: string;
@@ -18,8 +19,13 @@ export function MobileNavigation({ activeSection }: MobileNavigationProps) {
   ];
 
   // Close menu when clicking on a link
-  const handleLinkClick = () => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(false);
+    // Extract href from the event target to create smooth scroll handler
+    const href = e.currentTarget.getAttribute('href');
+    if (href) {
+      createSmoothScrollHandler(href)(e);
+    }
   };
 
   // Close menu when clicking outside
