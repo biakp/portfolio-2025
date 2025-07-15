@@ -28,8 +28,8 @@ const portfolioProjectData: ProjectPageData = {
   features: [
     {
       icon: Palette,
-      title: "Cyberpunk Design System",
-      description: "Custom cyberpunk aesthetic with cut-corner elements, neon glows, fake borders, and consistent color scheme throughout the entire interface.",
+      title: "Cyberpunk UI",
+      description: "Custom cyberpunk aesthetic with cut-corner elements, neon glows, and consistent color scheme throughout the entire interface.",
       color: "text-primary"
     },
     {
@@ -74,7 +74,7 @@ const portfolioProjectData: ProjectPageData = {
     },
     {
       title: "Design System",
-      content: "Consistent cyberpunk aesthetic with custom clip-path geometries, fake border effects, neon glow animations, and a carefully crafted color palette that maintains accessibility while delivering a futuristic visual experience."
+      content: "Consistent cyberpunk aesthetic with custom clip-path geometries, animations, and a carefully crafted color palette that maintains accessibility while delivering a futuristic visual experience."
     }
   ],
   githubUrl: "https://github.com/biakp/portfolio-2025",

@@ -80,7 +80,7 @@ const trayEcommerceProjectData: ProjectPageData = {
   technicalDetails: [
     {
       title: "Technical Highlights",
-      content: "Custom Twig templates with inheritance and macros, SCSS architecture with BEM methodology, JavaScript ES6+ with modular approach, and REST API integration for dynamic content."
+      content: "Custom templates with inheritance and macros, SCSS architecture with BEM methodology, JavaScript ES6+ with modular approach, and REST API integration for dynamic content."
     },
     {
       title: "Business Impact",
