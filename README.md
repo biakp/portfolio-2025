@@ -25,7 +25,7 @@ A modern, responsive portfolio website showcasing Beatriz Knabben's expertise in
 - **PWA Ready** - Progressive Web App capabilities with manifest and service worker support
 - **Cyberpunk Effects** - Interactive lighting, data streams, and holographic elements
 
-## 💼 About Beatriz
+## 💼 About Me
 
 Beatriz Knabben is a front-end developer specializing in:
 - **Modern Web Technologies**: React, Vue.js, Next.js, TypeScript
@@ -78,28 +78,6 @@ src/
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🛠️ Customization
-
-1. **Personal Information**
-   - Update name, title, and bio in the Hero and About sections
-   - Replace placeholder contact information
-   - Add your actual social media links
-
-2. **Projects**
-   - Replace example projects with your actual work
-   - Update project descriptions, technologies, and links
-   - Add project images if desired
-
-3. **Styling**
-   - Modify colors in `tailwind.config.ts`
-   - Adjust CSS custom properties in `globals.css`
-   - Customize animations in component files
-
-4. **Content**
-   - Update meta information in `layout.tsx`
-   - Modify section content to match your experience
-   - Add or remove skills in the About section
-
 ## 📦 Scripts
 
 - `npm run dev` - Start development server
@@ -110,12 +88,6 @@ src/
 ## 🚀 Deployment
 
 The easiest way to deploy is using [Vercel](https://vercel.com):
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy with one click
-
-Alternatively, you can deploy to any platform that supports Next.js.
 
 ## 📄 License
 
