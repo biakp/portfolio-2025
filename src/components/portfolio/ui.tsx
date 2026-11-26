@@ -4,13 +4,13 @@ import { CV, type Tone } from "@/content/site";
 import { useI18n } from "@/components/portfolio/i18n";
 
 export const toneClass: Record<Tone, string> = {
-  ink: "bg-[#141210] text-[#f6f1e7]",
-  citrus: "bg-[#e4ff4a] text-[#141210]",
-  foam: "bg-[#f7f3ea] text-[#141210]",
-  tangerine: "bg-[#ff4d1c] text-[#1a0e0a]",
-  cobalt: "bg-[#122a9e] text-[#f4f6ff]",
-  pine: "bg-[#102e2b] text-[#f3fff8]",
-  violet: "bg-[#241447] text-[#f6f1ff]",
+  ink: "bg-[#4e1636] text-[#fff7fb]",
+  citrus: "bg-[#ffd4ea] text-[#3a1630]",
+  foam: "bg-[#fff7fb] text-[#3a1630]",
+  tangerine: "bg-[#d5f1ff] text-[#3a1630]",
+  cobalt: "bg-[#e6d8ff] text-[#3a1630]",
+  pine: "bg-[#f4fbff] text-[#3a1630]",
+  violet: "bg-[#5b2d62] text-[#fff7fb]",
 };
 
 export function SkipLink() {
@@ -30,7 +30,7 @@ export function LanguageToggle({ size = "bar" }: { size?: "bar" | "hero" }) {
     <div
       role="group"
       aria-label={t.langLabel}
-      className={`grid shrink-0 grid-cols-2 border-2 border-[#141210] ${hero ? "w-full" : "w-[9.4rem] sm:w-[10.75rem]"}`}
+      className={`gel grid shrink-0 grid-cols-2 overflow-hidden ${hero ? "w-full" : "w-[9.4rem] sm:w-[10.75rem]"}`}
     >
       {(["en", "pt"] as const).map((code) => {
         const selected = lang === code;
@@ -40,9 +40,9 @@ export function LanguageToggle({ size = "bar" }: { size?: "bar" | "hero" }) {
             type="button"
             aria-pressed={selected}
             onClick={() => setLang(code)}
-            className={`font-display font-extrabold tracking-tight whitespace-nowrap ${
+            className={`font-display font-bold tracking-tight whitespace-nowrap ${
               hero ? "min-h-12 px-3 py-3 text-base" : "min-h-11 px-2 py-2 text-[13px] sm:text-sm"
-            } ${selected ? "bg-[#141210] text-[#e4ff4a]" : "bg-[#f7f3ea] text-[#141210]"}`}
+            } ${selected ? "bg-[#4e1636] text-[#fff7fb]" : "bg-[#fff7fb] text-[#3a1630]"}`}
           >
             {code === "en" ? "EN" : "PT-BR"}
           </button>
@@ -62,7 +62,7 @@ export function CvLink({ prominent = false, className = "" }: { prominent?: bool
       <a
         href={file.href}
         download={file.file}
-        className={`inline-flex min-h-11 items-center justify-center border-2 border-[#141210] bg-[#141210] px-3 font-display text-sm font-extrabold text-[#e4ff4a] ${className}`}
+        className={`gel inline-flex min-h-11 items-center justify-center bg-[#4e1636] px-4 font-display text-sm font-bold text-[#fff7fb] ${className}`}
       >
         {t.cv}
       </a>
@@ -79,7 +79,7 @@ export function CvLink({ prominent = false, className = "" }: { prominent?: bool
         <a
           href={file.href}
           download={file.file}
-          className="inline-flex min-h-12 items-center border-2 border-[#141210] bg-[#141210] px-4 font-display text-base font-extrabold text-[#e4ff4a]"
+          className="gel inline-flex min-h-12 items-center bg-[#4e1636] px-4 font-display text-base font-bold text-[#fff7fb]"
         >
           {t.cv}
         </a>
@@ -92,5 +92,10 @@ export function CvLink({ prominent = false, className = "" }: { prominent?: bool
 }
 
 export function Kicker({ children }: { children: React.ReactNode }) {
-  return <p className="font-mono text-[11px] uppercase tracking-[0.18em]">{children}</p>;
+  return (
+    <p className="font-mono text-[11px] uppercase tracking-[0.18em]">
+      <span aria-hidden>✦ </span>
+      {children}
+    </p>
+  );
 }

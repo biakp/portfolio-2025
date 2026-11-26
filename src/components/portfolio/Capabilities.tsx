@@ -37,7 +37,7 @@ export function Capabilities() {
         <h2 className="font-display text-4xl leading-[0.95] font-extrabold sm:text-5xl">{t.capTitle}</h2>
         <p className="text-base leading-relaxed">{t.capIntro}</p>
       </div>
-      <p className="mt-4 inline-flex max-w-3xl border-2 border-[#141210] bg-[#141210] px-3 py-2 font-mono text-xs leading-relaxed text-[#e4ff4a]">
+      <p className="mt-4 inline-flex max-w-3xl rounded-2xl bg-[#4e1636] px-3 py-2 font-mono text-xs leading-relaxed text-[#fff7fb]">
         {t.capNote}
       </p>
 
@@ -52,8 +52,8 @@ export function Capabilities() {
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setFilter(item)}
-                className={`shrink-0 border-2 border-[#141210] px-3 py-2 text-left font-mono text-[11px] uppercase tracking-[0.08em] ${
-                  selected ? "bg-[#141210] text-[#e4ff4a]" : "bg-[#f7f3ea] text-[#141210]"
+                className={`gel shrink-0 px-3 py-2 text-left font-mono text-[11px] uppercase tracking-[0.08em] ${
+                  selected ? "bg-[#4e1636] text-[#fff7fb]" : "bg-[#fff7fb] text-[#3a1630]"
                 }`}
               >
                 {label}
@@ -84,7 +84,7 @@ export function Capabilities() {
                     <span>
                       {item.number} · {t.categories[item.category]}
                     </span>
-                    <span className="border-2 border-current px-2 py-1">{open ? t.close : t.details}</span>
+                    <span className="rounded-full border border-current px-2.5 py-1">{open ? t.close : t.details}</span>
                   </span>
                   <span className="font-display text-2xl leading-tight font-extrabold sm:text-3xl">{item.title[lang]}</span>
                   <span className="text-sm leading-relaxed sm:text-base">{item.summary[lang]}</span>
@@ -95,7 +95,7 @@ export function Capabilities() {
                   <p className="font-mono text-[11px] uppercase tracking-[0.16em]">{t.includes}</p>
                   <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                     {item.points[lang].map((point) => (
-                      <li key={point} className="border-2 border-current/30 px-3 py-3 text-sm leading-relaxed">
+                      <li key={point} className="rounded-2xl border border-current/25 bg-white/25 px-3 py-3 text-sm leading-relaxed">
                         {point}
                       </li>
                     ))}

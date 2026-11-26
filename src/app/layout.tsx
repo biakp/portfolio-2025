@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Outfit, Syne } from "next/font/google";
+import { Comfortaa, IBM_Plex_Mono, Nunito } from "next/font/google";
 import { LanguageProvider } from "@/components/portfolio/i18n";
 import { SkipLink } from "@/components/portfolio/ui";
 import "./globals.css";
 
-const outfit = Outfit({
+const outfit = Nunito({
   subsets: ["latin"],
   variable: "--font-outfit",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
 });
 
-const syne = Syne({
+const syne = Comfortaa({
   subsets: ["latin"],
   variable: "--font-syne",
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
 const plex = IBM_Plex_Mono({
@@ -27,7 +27,7 @@ const siteUrl = "https://portfolio-2025-rose-delta.vercel.app";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#e4ff4a",
+  themeColor: "#ffd4ea",
 };
 
 export const metadata: Metadata = {

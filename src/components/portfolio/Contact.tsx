@@ -9,7 +9,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-[1180px] px-4 py-8 sm:px-6">
-      <article className="tile bg-[#e4ff4a] p-5 sm:p-8">
+      <article className="tile bg-[#fff7fb] p-5 text-[#3a1630] sm:p-8">
         <Kicker>{t.contactKicker}</Kicker>
         <h2 className="font-display mt-3 text-4xl leading-[0.95] font-extrabold sm:text-6xl">{t.contactTitle}</h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed">{t.contactBody}</p>
@@ -25,13 +25,13 @@ export function Contact() {
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <a
             href={mailHref(t.roleSubject, t.roleBody)}
-            className="inline-flex min-h-12 items-center justify-center border-2 border-[#141210] bg-[#141210] px-4 text-center font-display font-extrabold text-[#e4ff4a]"
+            className="gel inline-flex min-h-12 items-center justify-center bg-[#4e1636] px-4 text-center font-display font-bold text-[#fff7fb]"
           >
             {t.recruiterCta}
           </a>
           <a
             href={mailHref(t.projectSubject, t.projectBody)}
-            className="inline-flex min-h-12 items-center justify-center border-2 border-[#141210] bg-[#ff4d1c] px-4 text-center font-display font-extrabold text-[#1a0e0a]"
+            className="gel inline-flex min-h-12 items-center justify-center bg-[#ffd4ea] px-4 text-center font-display font-bold text-[#3a1630]"
           >
             {t.clientCta}
           </a>
@@ -49,7 +49,7 @@ export function Contact() {
           </li>
         </ul>
       </article>
-      <footer className="mt-4 flex flex-col gap-2 border-t-2 border-[#141210] pt-4 font-mono text-xs sm:flex-row sm:items-center sm:justify-between">
+      <footer className="mt-4 flex flex-col gap-2 border-t border-[#3a1630]/20 pt-4 font-mono text-xs text-[#3a1630] sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Beatriz Knabben</p>
         <p>{t.footer}</p>
       </footer>

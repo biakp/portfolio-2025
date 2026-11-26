@@ -15,11 +15,11 @@ export function Header() {
   const { t } = useI18n();
 
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-[#141210] bg-[#e6dfd2]">
-      <div className="h-1.5 bg-[#e4ff4a]" />
+    <header className="sticky top-0 z-40 border-b border-[#e7c3d6] bg-[#fff7fb]">
+      <div className="h-1.5 bg-[linear-gradient(90deg,#ffd4ea,#e6d8ff,#d5f1ff,#ffd4ea)]" />
       <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-2 px-4 py-3 sm:px-6">
         <a href="#top" className="flex min-w-0 items-center gap-2">
-          <span className="grid h-11 w-11 shrink-0 place-items-center border-2 border-[#141210] bg-[#e4ff4a] font-display text-sm font-extrabold">
+          <span className="gel grid h-11 w-11 shrink-0 place-items-center bg-[#ffd4ea] font-display text-sm font-bold text-[#3a1630]">
             BK
           </span>
           <span className="min-w-0">
@@ -46,7 +46,7 @@ export function Header() {
             <li key={key} className="shrink-0">
               <a
                 href={href}
-                className="inline-flex min-h-10 items-center border-2 border-[#141210] bg-[#f7f3ea] px-3 font-mono text-[11px] uppercase tracking-[0.14em]"
+                className="gel inline-flex min-h-10 items-center bg-[#fff7fb] px-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[#3a1630]"
               >
                 {t.nav[key]}
               </a>

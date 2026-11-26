@@ -15,7 +15,7 @@ export function Services() {
           <h2 className="font-display mt-2 text-4xl leading-[0.95] font-extrabold sm:text-5xl">{t.servicesTitle}</h2>
           <p className="mt-3 max-w-2xl text-base leading-relaxed">{t.servicesIntro}</p>
         </div>
-        <div role="group" aria-label={t.currencyLabel} className="grid w-full max-w-[14rem] grid-cols-2 border-2 border-[#141210]">
+        <div role="group" aria-label={t.currencyLabel} className="gel grid w-full max-w-[14rem] grid-cols-2 overflow-hidden">
           {(["usd", "brl"] as Currency[]).map((code) => {
             const selected = currency === code;
             return (
@@ -24,8 +24,8 @@ export function Services() {
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setCurrency(code)}
-                className={`min-h-12 font-display text-sm font-extrabold ${
-                  selected ? "bg-[#141210] text-[#e4ff4a]" : "bg-[#f7f3ea] text-[#141210]"
+                className={`min-h-12 font-display text-sm font-bold ${
+                  selected ? "bg-[#4e1636] text-[#fff7fb]" : "bg-[#fff7fb] text-[#3a1630]"
                 }`}
               >
                 {code === "usd" ? "USD" : "BRL"}
@@ -56,7 +56,7 @@ export function Services() {
               </div>
               <a
                 href={mailHref(subject, t.projectBody)}
-                className="inline-flex min-h-11 items-center justify-center border-2 border-current px-3 text-center font-display text-sm font-extrabold"
+                className="gel inline-flex min-h-11 items-center justify-center border border-current/30 px-3 text-center font-display text-sm font-bold"
               >
                 {t.request}
               </a>
@@ -65,11 +65,11 @@ export function Services() {
         })}
       </div>
 
-      <div className="mt-4 flex flex-col gap-3 border-2 border-[#141210] bg-[#141210] p-5 text-[#f6f1e7] sm:flex-row sm:items-center sm:justify-between">
+      <div className="tile mt-4 flex flex-col gap-3 bg-[#4e1636] p-5 text-[#fff7fb] sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-xl text-sm leading-relaxed sm:text-base">{t.servicesFine}</p>
         <a
           href={mailHref(t.projectSubject, t.projectBody)}
-          className="inline-flex min-h-12 items-center justify-center bg-[#e4ff4a] px-4 text-center font-display text-base font-extrabold text-[#141210]"
+          className="gel inline-flex min-h-12 items-center justify-center bg-[#ffd4ea] px-4 text-center font-display text-base font-bold text-[#3a1630]"
         >
           {t.servicesCta}
         </a>
