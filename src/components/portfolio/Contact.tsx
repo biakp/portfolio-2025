@@ -15,12 +15,12 @@ export function Contact() {
         <p className="mt-4 max-w-2xl text-base leading-relaxed">{t.contactBody}</p>
         <a
           href={`mailto:${EMAIL}`}
-          className="font-display mt-6 block max-w-full text-[clamp(1.65rem,6.5vw,2.8rem)] leading-[0.95] font-extrabold [overflow-wrap:anywhere] underline decoration-2 underline-offset-4"
+          className="mt-5 block max-w-full font-display text-xl leading-snug font-bold tracking-tight underline decoration-[#ffb3d8] decoration-2 underline-offset-4 sm:text-[1.65rem]"
         >
           <span className="sr-only">{t.emailLabel} </span>
-          <span className="block">beatriz.</span>
-          <span className="block">knabbenp</span>
-          <span className="block">@gmail.com</span>
+          beatriz.knabbenp
+          <wbr />
+          @gmail.com
         </a>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <a

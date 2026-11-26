@@ -40,8 +40,8 @@ export function Header() {
       <div className="px-4 pb-3 md:hidden">
         <CvLink className="w-full" />
       </div>
-      <nav aria-label={t.navLabel} className="mx-auto max-w-[1180px] px-4 pb-3 sm:px-6">
-        <ul className="chip-row flex gap-2 overflow-x-auto">
+      <nav aria-label={t.navLabel} className="mx-auto max-w-[1180px] px-4 sm:px-6">
+        <ul className="chip-row flex gap-2 overflow-x-auto pt-2.5 pb-7">
           {links.map(([key, href]) => (
             <li key={key} className="shrink-0">
               <a
