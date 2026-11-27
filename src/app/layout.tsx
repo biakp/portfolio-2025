@@ -1,25 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Comfortaa, IBM_Plex_Mono, Nunito } from "next/font/google";
+import { Chakra_Petch, Plus_Jakarta_Sans, Silkscreen, Space_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/portfolio/i18n";
 import { SkipLink } from "@/components/portfolio/ui";
 import "./globals.css";
 
-const outfit = Nunito({
+const outfit = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-outfit",
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const syne = Comfortaa({
+const syne = Chakra_Petch({
   subsets: ["latin"],
   variable: "--font-syne",
   weight: ["500", "600", "700"],
 });
 
-const plex = IBM_Plex_Mono({
+const plex = Space_Mono({
   subsets: ["latin"],
   variable: "--font-plex",
-  weight: ["400", "500"],
+  weight: ["400", "700"],
+});
+
+const hud = Silkscreen({
+  subsets: ["latin"],
+  variable: "--font-hud",
+  weight: "400",
 });
 
 const siteUrl = "https://portfolio-2025-rose-delta.vercel.app";
@@ -27,7 +33,7 @@ const siteUrl = "https://portfolio-2025-rose-delta.vercel.app";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffd4ea",
+  themeColor: "#0a0a0f",
 };
 
 export const metadata: Metadata = {
@@ -93,7 +99,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${syne.variable} ${plex.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${outfit.variable} ${syne.variable} ${plex.variable} ${hud.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <LanguageProvider>
