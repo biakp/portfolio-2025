@@ -2,36 +2,28 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Beatriz Knabben",
-  "jobTitle": "Front-End Developer",
-  "description": "Front-end developer specializing in modern web technologies, e-commerce solutions, and digital marketing automation.",
-  "url": "https://beatrizknabben.dev",
-  "sameAs": [
-    "https://linkedin.com/in/beatrizknabben",
-    "https://github.com/beatrizknabben",
-    "https://twitter.com/beatrizknabben"
-  ],
-  "knowsAbout": [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Vue.js",
-    "Shopify",
-    "Tailwind CSS",
-    "Digital Marketing",
-    "Meta Ads",
-    "Automation",
-    "Cybersecurity"
-  ],
-  "alumniOf": {
-    "@type": "EducationalOrganization",
-    "name": "Your University/School"
-  },
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Freelance"
-  },
+  "alternateName": "Bea",
+  "jobTitle": "Front-End & Shopify Developer",
+  "email": "mailto:beatriz.knabbenp@gmail.com",
+  "url": "https://portfolio-2025-rose-delta.vercel.app",
   "address": {
     "@type": "PostalAddress",
+    "addressLocality": "Tubarão",
+    "addressRegion": "SC",
     "addressCountry": "BR"
-  }
+  },
+  "knowsLanguage": ["pt-BR", "en"],
+  "sameAs": [
+    "https://linkedin.com/in/biakp",
+    "https://github.com/biakp"
+  ],
+  "knowsAbout": [
+    "Shopify",
+    "Liquid",
+    "Online Store 2.0",
+    "React",
+    "Vue.js",
+    "Webflow",
+    "Accessibility"
+  ]
 }

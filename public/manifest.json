@@ -1,41 +1,11 @@
 {
-  "name": "Beatriz Knabben - Portfolio",
-  "short_name": "Beatriz Portfolio",
-  "description": "Portfolio of Beatriz Knabben, a front-end developer specializing in modern web technologies",
+  "name": "Bea Knabben — Front-End & Shopify Developer",
+  "short_name": "Bea Knabben",
+  "description": "Front-end and Shopify Online Store 2.0 developer. Remote roles and fixed-price Shopify fixes.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#151515",
-  "theme_color": "#455dff",
-  "orientation": "portrait-primary",
-  "categories": ["portfolio", "technology", "developer"],
+  "background_color": "#ffe9f4",
+  "theme_color": "#ffd4ea",
   "lang": "en",
-  "dir": "ltr",
-  "icons": [
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1280x800",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ]
+  "dir": "ltr"
 }

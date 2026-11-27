@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/projects/:path*",
+        destination: "/",
+        permanent: false,
+      },
+    ];
+  },
+
   // Security headers
   async headers() {
     return [
