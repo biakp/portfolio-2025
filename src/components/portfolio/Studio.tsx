@@ -21,7 +21,7 @@ export function Studio() {
   const { t } = useI18n();
 
   return (
-    <section id="about" className="mx-auto grid max-w-[1180px] gap-3 px-4 py-8 sm:px-6 md:grid-cols-12">
+    <section id="about" className="mx-auto grid max-w-[1180px] gap-4 px-4 py-14 sm:gap-5 sm:px-6 sm:py-20 md:grid-cols-12">
       <div className="md:col-span-12">
         <Sys index="05">{t.nav.about}</Sys>
         <h2 className="font-display mt-2 text-4xl leading-[0.95] font-semibold sm:text-5xl">{t.aboutTitle}</h2>

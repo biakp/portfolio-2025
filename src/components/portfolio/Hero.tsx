@@ -15,7 +15,8 @@ function Barcode() {
   });
 
   return (
-    <svg className="mt-6 h-7 w-full max-w-[15rem]" viewBox={`0 0 ${x} 24`} aria-hidden>
+    <div className="barcode mt-6">
+    <svg className="h-7 w-full" viewBox={`0 0 ${x} 24`} aria-hidden>
       {rects.map((rect) => (
         <rect
           key={rect.index}
@@ -27,6 +28,7 @@ function Barcode() {
         />
       ))}
     </svg>
+    </div>
   );
 }
 
@@ -44,13 +46,16 @@ export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section id="top" className="hero-bento mx-auto grid max-w-[1180px] gap-3 px-4 py-4 sm:px-6">
-      <article className="tile area-name relative bg-[#111118] p-5 text-[#F1EDF7] sm:p-8">
+    <section id="top" className="hero-bento mx-auto grid max-w-[1180px] gap-5 px-4 py-8 sm:gap-6 sm:px-6 sm:py-12">
+      <article className="tile scan-host area-name relative bg-[#111118] p-5 text-[#F1EDF7] sm:p-8">
         <div className="flex items-start justify-between gap-3">
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#8796C4]">
             <span className="font-hud text-[10px] text-[#E879B9]">DATA CARD</span>
             <span className="px-2 text-[#C48ED8]">{"//"}</span>
             01
+            <span className="caret" aria-hidden>
+              _
+            </span>
           </p>
           <p className="font-hud hidden text-[10px] tracking-[0.12em] text-[#C48ED8] md:block">✦ OS 2.0</p>
         </div>
@@ -69,6 +74,7 @@ export function Hero() {
         <Barcode />
         <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-[#8796C4]">{"LOC: BR // UTC−3"}</p>
         <div aria-hidden className="dither absolute right-5 bottom-5 hidden md:block" />
+        <span className="scan-bar" aria-hidden />
       </article>
 
       <article className="tile area-avail flex flex-col justify-between gap-6 bg-[#151520] p-5 text-[#F1EDF7]">

@@ -8,7 +8,7 @@ export function Contact() {
   const { t } = useI18n();
 
   return (
-    <section id="contact" className="mx-auto max-w-[1180px] px-4 py-8 sm:px-6">
+    <section id="contact" className="mx-auto max-w-[1180px] px-4 py-14 sm:px-6 sm:py-20">
       <article className="tile bg-[#111118] p-5 text-[#F1EDF7] sm:p-8">
         <Sys index="04">{t.nav.contact}</Sys>
         <h2 className="font-display mt-3 text-4xl leading-[0.95] font-semibold sm:text-6xl">{t.contactTitle}</h2>

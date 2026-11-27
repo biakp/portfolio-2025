@@ -8,7 +8,7 @@ export function Services() {
   const { lang, currency, setCurrency, t } = useI18n();
 
   return (
-    <section id="services" className="mx-auto max-w-[1180px] px-4 py-8 sm:px-6">
+    <section id="services" className="mx-auto max-w-[1180px] px-4 py-14 sm:px-6 sm:py-20">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <Sys index="02">{t.nav.services}</Sys>
@@ -35,7 +35,7 @@ export function Services() {
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3 md:grid-cols-6">
+      <div className="mt-6 grid gap-4 sm:gap-5 md:grid-cols-6">
         {services.map((service, index) => {
           const price = priceFor(service, currency, lang);
           const subject = `${t.projectSubject} — ${service.name[lang]}`;

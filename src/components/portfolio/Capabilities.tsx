@@ -31,7 +31,7 @@ export function Capabilities() {
   const filters: Filter[] = ["all", ...categories];
 
   return (
-    <section id="capabilities" className="mx-auto max-w-[1180px] px-4 py-8 sm:px-6">
+    <section id="capabilities" className="mx-auto max-w-[1180px] px-4 py-14 sm:px-6 sm:py-20">
       <Sys index="01">{t.nav.capabilities}</Sys>
       <div className="mt-2 grid gap-4 md:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)] md:items-end">
         <h2 className="font-display text-4xl leading-[0.95] font-semibold sm:text-5xl">{t.capTitle}</h2>
@@ -66,7 +66,7 @@ export function Capabilities() {
         </p>
       </div>
 
-      <div key={filter} className="rise mt-4 grid gap-3 md:grid-cols-2">
+      <div key={filter} className="rise mt-6 grid gap-4 sm:gap-5 md:grid-cols-2">
         {visible.map((item) => {
           const open = openId === item.id;
           const panelId = `${item.id}-panel`;
